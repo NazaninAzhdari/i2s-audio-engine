@@ -63,6 +63,7 @@ architecture RTL of melody_gen is
                         r_freq_counter <= 0;
                         r_duration_counter <= 0;
                         tone_indx <= 0;
+                        r_level <='0';
                     end if;
 
                     --------------------------------------------------------------

@@ -17,7 +17,7 @@ entity RX_decoder is
         o_key_g        :   out     STD_LOGIC;
         o_key_h        :   out     STD_LOGIC;
         o_key_i        :   out     STD_LOGIC;
-        o_key_g        :   out     STD_LOGIC;
+        o_key_j        :   out     STD_LOGIC;
         o_key_k        :   out     STD_LOGIC;
         o_key_l        :   out     STD_LOGIC;
         o_key_m        :   out     STD_LOGIC;
@@ -67,7 +67,7 @@ architecture RTL of RX_decoder is
     signal r_key_z_timer    : integer range 0 to 1          :=0;
 
     begin
-        process(i_clk) is
+        process(i_clk, i_reset) is
             begin
                 if i_reset = '1' then 
                     o_key_a <= '0';
@@ -96,32 +96,32 @@ architecture RTL of RX_decoder is
                     o_key_x <= '0';
                     o_key_y <= '0';
                     o_key_z <= '0';
-                    o_key_a_timer <= 0;
-                    o_key_b_timer <= 0;
-                    o_key_c_timer <= 0;
-                    o_key_d_timer <= 0;
-                    o_key_e_timer <= 0;
-                    o_key_f_timer <= 0;
-                    o_key_g_timer <= 0;
-                    o_key_h_timer <= 0;
-                    o_key_i_timer <= 0;
-                    o_key_g_timer <= 0;
-                    o_key_k_timer <= 0;
-                    o_key_l_timer <= 0;
-                    o_key_m_timer <= 0;
-                    o_key_n_timer <= 0;
-                    o_key_o_timer <= 0;
-                    o_key_p_timer <= 0;
-                    o_key_q_timer <= 0;
-                    o_key_r_timer <= 0;
-                    o_key_s_timer <= 0;
-                    o_key_t_timer <= 0;
-                    o_key_u_timer <= 0;
-                    o_key_v_timer <= 0;
-                    o_key_w_timer <= 0;
-                    o_key_x_timer <= 0;
-                    o_key_y_timer <= 0;
-                    o_key_z_timer <= 0;
+                    r_key_a_timer <= 0;
+                    r_key_b_timer <= 0;
+                    r_key_c_timer <= 0;
+                    r_key_d_timer <= 0;
+                    r_key_e_timer <= 0;
+                    r_key_f_timer <= 0;
+                    r_key_g_timer <= 0;
+                    r_key_h_timer <= 0;
+                    r_key_i_timer <= 0;
+                    r_key_g_timer <= 0;
+                    r_key_k_timer <= 0;
+                    r_key_l_timer <= 0;
+                    r_key_m_timer <= 0;
+                    r_key_n_timer <= 0;
+                    r_key_o_timer <= 0;
+                    r_key_p_timer <= 0;
+                    r_key_q_timer <= 0;
+                    r_key_r_timer <= 0;
+                    r_key_s_timer <= 0;
+                    r_key_t_timer <= 0;
+                    r_key_u_timer <= 0;
+                    r_key_v_timer <= 0;
+                    r_key_w_timer <= 0;
+                    r_key_x_timer <= 0;
+                    r_key_y_timer <= 0;
+                    r_key_z_timer <= 0;
                 
                 elsif rising_edge(i_clk) then
 					r_en <= i_en;
@@ -142,7 +142,7 @@ architecture RTL of RX_decoder is
                             when "01100111" => r_key_g_timer <= 1;
                             when "01101000" => r_key_h_timer <= 1;
                             when "01101001" => r_key_i_timer <= 1;
-                            when "01101010" => r_key_g_timer <= 1;
+                            when "01101010" => r_key_j_timer <= 1;
                             when "01101011" => r_key_k_timer <= 1;
                             when "01101100" => r_key_l_timer <= 1;
                             when "01101101" => r_key_m_timer <= 1;
