@@ -5,11 +5,11 @@ use IEEE.NUMERIC_STD.ALL;
 library work;
 use work.melody_pack.ALL;
 
-entity audio_top is
+entity audio_engine_top is
     port (
         --inputs
         i_clk50             :   in      STD_LOGIC;
-        i_reset             :   in      STD_LOGIC;
+        --i_reset             :   in      STD_LOGIC;
         i_en_switch         :   in      unsigned(3 downto 0);
         
         --outputs
@@ -18,9 +18,9 @@ entity audio_top is
         o_BCLK              :   out     STD_LOGIC;
         o_DATA              :   out     STD_LOGIC
     );
-end audio_top;
+end audio_engine_top;
 
-architecture RTL of audio_top is
+architecture RTL of audio_engine_top is
     signal w_LRCLK              : STD_LOGIC              :='0';
 
     --Sample Signals
@@ -41,7 +41,7 @@ architecture RTL of audio_top is
     --signal w_robat_DV           : STD_LOGIC              :='0';
 	 
     begin 
-        
+
         -------------------------------------------
         --Generating Police sound
         --------------------------------------------
@@ -118,24 +118,6 @@ architecture RTL of audio_top is
             o_sample_DV => w_frog_DV
         );
 
-        -------------------------------------------
-        --Generating Frog sound
-        --------------------------------------------
-        -- information about this melody is in melody_pack.vhd
-        frog_melody_generator: entity work.melody_gen
-        generic map(
-            g_SAMPLE_WIDTH => 24,
-            g_HALF_PERIOD_TONE => c_FROG,     
-            g_TONE_LIMIT => 24,                  
-            g_DURATION_LIMIT => 5000                
-        )
-        port map(
-            i_clk => i_clk50,
-            i_en => i_en_switch(3),
-            i_LRCLK => w_LRCLK,
-            o_sample => w_frog_sample,
-            o_sample_DV => w_frog_DV
-        );
 
 		--------------------------------------------
         --Transmitting the generated samples to DAC
@@ -148,7 +130,7 @@ architecture RTL of audio_top is
         )
         port map(
             i_clk => i_clk50,
-            i_reset => i_reset,
+            i_reset => '0',
             i_sample => r_sample,
             o_BCLK => o_BCLK,
             o_LRCLK => w_LRCLK,
@@ -161,7 +143,7 @@ architecture RTL of audio_top is
         --------------------------------------------------------
         r_sample <= w_police_sample     when w_police_DV = '1' else
                     w_ambulance_sample  when w_ambulance_DV = '1' else
-					w_bird_sample       when bird_DV = '1' else
+					w_bird_sample       when w_bird_DV = '1' else
                     w_frog_sample       when w_frog_DV = '1' else
 					(others=>'0');
 
