@@ -2,23 +2,23 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
---LRCLK = sample rate = 48 kHz
---BCLK  = LRCLK × 64 = 3.072 MHz
---MCLK  = LRCLK × 256 = 12.288 MHz
+--Desired LRCLK = sample rate = 48.1 kHz
+--Desired BCLK  = LRCLK × 64 = 3.072 MHz
+--Desired MCLK  = LRCLK × 256 = 12.288 MHz
 
 entity i2s_tx is
     generic (
         g_SAMPLE_WIDTH      :   integer         :=24;   --Can be configured by 8, 16, 24 or 32.
         g_HALF_PERIOD_MCLK  :   integer         :=2;    --12.5MHz,   g_HALF_PERIOD_MCLK = Systems clock frequency / (Master clock Frequency * 2)
-        g_HALF_PERIOD_BCLK  :   integer         :=8     --3.1MHz,    g_HALF_PERIOD_BCLK = Systems clock frequency / (Bit clock Frequency * 2)
+        g_HALF_PERIOD_BCLK  :   integer         :=8     --3.125MHz,  g_HALF_PERIOD_BCLK = Systems clock frequency / (Bit clock Frequency * 2)
     );
     port (
         i_clk               :   in      STD_LOGIC; --System Clock = 50MHZ
         i_reset             :   in      STD_LOGIC;
         i_sample            :   in      unsigned(g_SAMPLE_WIDTH -1 downto 0);
-        o_BCLK              :   out     STD_LOGIC; 
-        o_LRCLK             :   out     STD_LOGIC;
-        o_MCLK              :   out     STD_LOGIC;
+        o_BCLK              :   out     STD_LOGIC; --3.125MHz Clock
+        o_LRCLK             :   out     STD_LOGIC; --48.828KHz Clock
+        o_MCLK              :   out     STD_LOGIC; --12.5MHz Clock
         o_DATA              :   out     STD_LOGIC
     );
 end i2s_tx;

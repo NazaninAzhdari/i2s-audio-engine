@@ -8,14 +8,14 @@ end i2s_tx_TB;
 architecture RTL of i2s_tx_TB is
     constant c_SAMPLE_RESOLUTION_TB :   integer         :=24;   --Can be configured by 8, 16, 24 or 32.
     constant c_HALF_PERIOD_MCLK_TB  :   integer         :=2;    --12.5MHz,   g_HALF_PERIOD_MCLK = Systems clock frequency / (Master clock Frequency * 2)
-    constant c_HALF_PERIOD_BCLK_TB  :   integer         :=8;    --3.1MHz,    g_HALF_PERIOD_BCLK = Systems clock frequency / (Bit clock Frequency * 2)
+    constant c_HALF_PERIOD_BCLK_TB  :   integer         :=8;    --3.125MHz,  g_HALF_PERIOD_BCLK = Systems clock frequency / (Bit clock Frequency * 2)
     
     signal i_clk50_TB               :   STD_LOGIC                                       :='0';
     signal i_reset_TB               :   STD_LOGIC                                       :='0';
     signal i_sample_TB              :   unsigned(c_SAMPLE_RESOLUTION_TB -1 downto 0)    :=(others=>'0');
-    signal o_BCLK_TB                :   STD_LOGIC; 
-    signal o_LRCLK_TB               :   STD_LOGIC;
-    signal o_MCLK_TB                :   STD_LOGIC;
+    signal o_BCLK_TB                :   STD_LOGIC; --3.125MHz Clock
+    signal o_LRCLK_TB               :   STD_LOGIC; --48.828KHz Clock
+    signal o_MCLK_TB                :   STD_LOGIC; --12.5MHz Clock
     signal o_DATA_TB                :   STD_LOGIC;
 
     constant c_CLK50_PERIOD         :   time    := 20 ns;
@@ -160,6 +160,7 @@ architecture RTL of i2s_tx_TB is
 
 
             i_sample_TB <= "101010101010101010101010";
+            --MSB of sample, bit 23
             assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
             wait until rising-edge(o_BCLK_TB);
             --bit 22
@@ -268,6 +269,5 @@ architecture RTL of i2s_tx_TB is
 
             i_sample_TB <= (others=>'1');
             wait until rising_edge(o_LRCLK_TB);
-
 
     end RTL;
