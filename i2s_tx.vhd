@@ -8,9 +8,9 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity i2s_tx is
     generic (
-        g_SAMPLE_WIDTH      :   integer         :=24;
-        g_HALF_PERIOD_MCLK  :   integer         :=2;    --12.5MHz 
-        g_HALF_PERIOD_BCLK  :   integer         :=8     --3.1MHz
+        g_SAMPLE_WIDTH      :   integer         :=24;   --Can be configured by 8, 16, 24 or 32.
+        g_HALF_PERIOD_MCLK  :   integer         :=2;    --12.5MHz,   g_HALF_PERIOD_MCLK = Systems clock frequency / (Master clock Frequency * 2)
+        g_HALF_PERIOD_BCLK  :   integer         :=8     --3.1MHz,    g_HALF_PERIOD_BCLK = Systems clock frequency / (Bit clock Frequency * 2)
     );
     port (
         i_clk               :   in      STD_LOGIC; --System Clock = 50MHZ
@@ -34,6 +34,9 @@ architecture RTL of i2s_tx is
     signal r_LRCLK  :   STD_LOGIC   :='1';
 	signal w_BCLK   :   STD_LOGIC   :='0';
     signal w_reset  :   STD_LOGIC   :='0';
+
+    --If sample width is 32bits, no need for PADDING BITS!
+    constant c_PADDING_BITS     :   unsigned(32-g_SAMPLE_WIDTH-1 downto 0)  :=(others=>'0');
     
     begin
         process(i_clk, i_reset) is
@@ -85,14 +88,20 @@ architecture RTL of i2s_tx is
                             else
                                 r_bit_counter <= 0;
                                 r_LRCLK <= not r_LRCLK;
-                                r_sample <= i_sample & "00000000";
+
+                                if g_SAMPLE_WIDTH = 32 then
+                                    r_sample <= i_sample;   --If sample width is 32bits, no need for PADDING BITS!
+                                else
+                                    r_sample <= i_sample & c_PADDING_BITS; --e.g. 24bits sample + 8 bits padding = 32bits 
+                                end if;
+
                             end if;
                         end if;
                     end if;
                 end if;
             end process;
             
-            o_DATA <= r_sample(31); 
+            o_DATA <= r_sample(31); --send MSB
             o_BCLK <= r_BCLK;
             o_MCLK <= r_MCLK;
             o_LRCLK <= r_LRCLK;
