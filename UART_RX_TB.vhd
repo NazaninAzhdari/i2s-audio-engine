@@ -12,6 +12,7 @@ architecture RTL of UART_RX_TB is
     signal o_data_parallel_TB       :   unsigned(7 downto 0);
     signal o_data_DV_TB             :   STD_LOGIC;
 
+	constant c_CLKS_PER_BIT 	:	integer	:=434;
     constant c_CLK50_PERIOD         :   time    := 20 ns;
     constant c_HALF_CLK50_PERIOD    :   time    := 10 ns;      
 
@@ -33,8 +34,8 @@ architecture RTL of UART_RX_TB is
         uut_uart_reciever: entity work.UART_RX
         generic map(
             g_BITS_LIMIT    => 8,
-            g_CLKS_PER_BIT  => 434     --Systems CLK / Baud rate
-        );
+            g_CLKS_PER_BIT  => c_CLKS_PER_BIT     --Systems CLK / Baud rate
+        )
         port map(
             i_clk            => i_CLK50_TB,
             i_reset          => i_reset_TB,
@@ -53,71 +54,77 @@ architecture RTL of UART_RX_TB is
             wait until rising_edge(i_CLK50_TB);
             --Start bit: Zero
             i_data_serial_TB <= '0'; 
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT; 
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT; 
             --Send Ascii code from LSB
             --Bit 0
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             --Bit 1
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 2
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 3
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 4
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 5
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 6
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 7
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             --send Stop Bit: one
             i_data_serial_TB <= '1';
-            wait until rising_edge(o_data_DV_TB);
-            assert o_parallel_data_TB = "00110011" report " Ascii code /= "00110011" " severity Error;
-            wait for c_CLK50_PERIOD;
-
+			wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            assert o_data_DV_TB= '1' report "Data is Not Valid" severity failure;
+            assert o_data_parallel_TB = "00110011" report " Ascii code /= 00110011 " severity failure;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
+				
+				
             --New Data
             --Start bit: Zero
             i_data_serial_TB <= '0'; 
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT; 
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT; 
             --Send Ascii code from LSB
             --Bit 0
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             --Bit 1
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 2
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 3
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 4
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 5
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 6
             i_data_serial_TB <= '0';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             -- Bit 7
             i_data_serial_TB <= '1';
-            wait until c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
             --send Stop Bit: one
             i_data_serial_TB <= '1';
-            wait until rising_edge(o_data_DV_TB);
-            assert o_parallel_data_TB = "10101010" report " Ascii code /= "10101010" " severity Error;
-            wait for c_CLK50_PERIOD;
+			wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
+            assert o_data_DV_TB= '1' report "Data is Not Valid" severity failure;
+            assert o_data_parallel_TB = "10101010" report " Ascii code /= 10101010 " severity failure;
+            wait for c_CLK50_PERIOD * c_CLKS_PER_BIT;
+			assert false report "Simulation finished" severity failure;
+
+		end process;
 
     end RTL;
