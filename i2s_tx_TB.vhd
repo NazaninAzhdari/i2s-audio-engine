@@ -57,217 +57,304 @@ architecture RTL of i2s_tx_TB is
             i_reset_TB <= '1';
             wait for c_CLK50_PERIOD;
             i_reset_TB <= '0';
-            wait for c_CLK50_TB;
-
-            i_sample_TB <= (others=>'1');
+            
+			wait until rising_edge(o_BCLK_TB);
             --MSB of sample, bit 23
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 23 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 22
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 22 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 21
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 21 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 20
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 20 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 19
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 19 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 18
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 18 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 17
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 17 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 16
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 16 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 15
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 15 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 14
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 14 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 13
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 13 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 12
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 12 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 11
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 11 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 10
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 10 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 9
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 9 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 8
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 8 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 7
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 7 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 6
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 6 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 5
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 5 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 4
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 4 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 3
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 3 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 2
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 2 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 1
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 1 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --LSB of sample, bit 0
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " Data 0 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 1
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 1 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 2
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 2 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 3
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 3 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 4
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 4 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 5
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 5 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 6
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 6 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 7
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 7 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 8
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
-            wait until rising_edge(o_LRCLK_TB);
-
-
-            i_sample_TB <= "101010101010101010101010";
+            assert o_DATA_TB = '0' report " padding 8 /= '0' " severity note;
+				
+				
+			i_sample_TB <= (others=>'1');
+            wait until rising_edge(o_BCLK_TB);
             --MSB of sample, bit 23
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 23 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 22
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 22 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 21
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 21 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 20
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 20 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 19
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 19 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 18
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 18 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 17
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 17 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 16
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 16 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 15
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 15 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 14
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 14 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 13
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 13 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 12
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 12 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 11
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 11 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 10
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 10 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 9
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 9 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 8
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 8 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 7
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 7 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 6
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 6 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 5
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 5 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 4
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 4 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 3
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 3 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 2
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 2 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --bit 1
-            assert o_DATA_TB = '1' report " Data /= '1' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 1 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --LSB of sample, bit 0
-            assert o_DATA_TB = '0' report " Data /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '1' report " Data 0 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 1
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 1 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 2
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 2 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 3
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 3 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 4
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 4 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 5
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 5 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 6
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 6 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 7
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
+            assert o_DATA_TB = '0' report " padding 7 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
             --padding 8
-            assert o_DATA_TB = '0' report " padding /= '0' " severity Error;
-            wait until rising-edge(o_BCLK_TB);
-            wait until rising_edge(o_LRCLK_TB);
-
-            i_sample_TB <= "111111111111000000000000";
-            wait until rising_edge(o_LRCLK_TB);
-
-            i_sample_TB <= "000000000000111111111111";
-            wait until rising_edge(o_LRCLK_TB);
-
-            i_sample_TB <= "110011001100110011001100";
-            wait until rising_edge(o_LRCLK_TB);
-
-            i_sample_TB <= (others=>'1');
-            wait until rising_edge(o_LRCLK_TB);
+            assert o_DATA_TB = '0' report " padding 8 /= '0' " severity note;
+				
+				
+			i_sample_TB <= "101010101010101010101010";
+            wait until rising_edge(o_BCLK_TB);
+            --MSB of sample, bit 23
+            assert o_DATA_TB = '1' report " Data 23 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 22
+            assert o_DATA_TB = '0' report " Data 22 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 21
+            assert o_DATA_TB = '1' report " Data 21 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 20
+            assert o_DATA_TB = '0' report " Data 20 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 19
+            assert o_DATA_TB = '1' report " Data 19 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 18
+            assert o_DATA_TB = '0' report " Data 18 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 17
+            assert o_DATA_TB = '1' report " Data 17 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 16
+            assert o_DATA_TB = '0' report " Data 16 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 15
+            assert o_DATA_TB = '1' report " Data 15 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 14
+            assert o_DATA_TB = '0' report " Data 14 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 13
+            assert o_DATA_TB = '1' report " Data 13 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 12
+            assert o_DATA_TB = '0' report " Data 12 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 11
+            assert o_DATA_TB = '1' report " Data 11 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 10
+            assert o_DATA_TB = '0' report " Data 10 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 9
+            assert o_DATA_TB = '1' report " Data 9 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 8
+            assert o_DATA_TB = '0' report " Data 8 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 7
+            assert o_DATA_TB = '1' report " Data 7 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 6
+            assert o_DATA_TB = '0' report " Data 6 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 5
+            assert o_DATA_TB = '1' report " Data 5 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 4
+            assert o_DATA_TB = '0' report " Data 4 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 3
+            assert o_DATA_TB = '1' report " Data 3 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 2
+            assert o_DATA_TB = '0' report " Data 2 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --bit 1
+            assert o_DATA_TB = '1' report " Data 1 /= '1' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --LSB of sample, bit 0
+            assert o_DATA_TB = '0' report " Data 0 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 1
+            assert o_DATA_TB = '0' report " padding 1 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 2
+            assert o_DATA_TB = '0' report " padding 2 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 3
+            assert o_DATA_TB = '0' report " padding 3 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 4
+            assert o_DATA_TB = '0' report " padding 4 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 5
+            assert o_DATA_TB = '0' report " padding 5 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 6
+            assert o_DATA_TB = '0' report " padding 6 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 7
+            assert o_DATA_TB = '0' report " padding 7 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+            --padding 8
+            assert o_DATA_TB = '0' report " padding 8 /= '0' " severity note;
+            wait until rising_edge(o_BCLK_TB);
+     
+			assert false report " simulation finished! " severity failure;
+			end process;
 
     end RTL;
