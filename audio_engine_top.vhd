@@ -11,8 +11,9 @@ entity audio_engine_top is
         i_clk50             :   in      STD_LOGIC;
         i_reset             :   in      STD_LOGIC;
         i_RX_DATA           :   in      STD_LOGIC;
-        
+       
         --outputs
+        o_LEDs              :   out     unsigned(7 downto 0);
         o_MCLK              :   out     STD_LOGIC;
         o_LRCLK             :   out     STD_LOGIC;
         o_BCLK              :   out     STD_LOGIC;
@@ -62,6 +63,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_data_serial => r_sync2, 
             o_data_parallel => w_RX_parallel_data, 
             o_data_DV => w_RX_DV 
@@ -117,6 +119,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(0),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(0),
@@ -132,6 +135,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(1),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(1),
@@ -147,6 +151,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(2),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(2),
@@ -162,6 +167,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(3),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(3),
@@ -177,6 +183,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(4),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(4),
@@ -192,6 +199,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(5),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(5),
@@ -207,6 +215,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(6),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(6),
@@ -222,6 +231,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(7),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(7),
@@ -237,6 +247,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(8),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(8),
@@ -252,6 +263,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(9),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(9),
@@ -267,6 +279,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(10),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(10),
@@ -282,6 +295,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(11),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(11),
@@ -297,6 +311,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(12),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(12),
@@ -312,6 +327,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(13),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(13),
@@ -327,6 +343,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(14),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(14),
@@ -342,6 +359,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(15),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(15),
@@ -357,6 +375,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(16),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(16),
@@ -372,6 +391,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(17),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(17),
@@ -387,6 +407,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(18),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(18),
@@ -402,6 +423,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(19),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(19),
@@ -417,6 +439,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(20),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(20),
@@ -432,6 +455,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(21),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(21),
@@ -447,6 +471,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(22),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(22),
@@ -462,6 +487,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(23),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(23),
@@ -477,6 +503,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(24),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(24),
@@ -492,6 +519,7 @@ architecture RTL of audio_engine_top is
         )
         port map(
             i_clk => i_clk50,
+            i_reset => not i_reset,
             i_en => r_en_switch(25),
             i_LRCLK => w_LRCLK,
             o_sample => w_samples(25),
@@ -517,43 +545,44 @@ architecture RTL of audio_engine_top is
             o_MCLK => o_MCLK,
             o_DATA => o_DATA
         );
-
+    
         --------------------------------------------------------
         --Determine which sample should go to the I2s-Tx module
         --------------------------------------------------------
-        process(w_DV, w_samples) is
-            begin
-                case W_DV is
-                    when "00000000000000000000000001" => r_sample <= w_samples(0);
-                    when "00000000000000000000000010" => r_sample <= w_samples(1);
-                    when "00000000000000000000000100" => r_sample <= w_samples(2);
-                    when "00000000000000000000001000" => r_sample <= w_samples(3);
-                    when "00000000000000000000010000" => r_sample <= w_samples(4);
-                    when "00000000000000000000100000" => r_sample <= w_samples(5);
-                    when "00000000000000000001000000" => r_sample <= w_samples(6);
-                    when "00000000000000000010000000" => r_sample <= w_samples(7);
-                    when "00000000000000000100000000" => r_sample <= w_samples(8);
-                    when "00000000000000001000000000" => r_sample <= w_samples(9);
-                    when "00000000000000010000000000" => r_sample <= w_samples(10);
-                    when "00000000000000100000000000" => r_sample <= w_samples(11);
-                    when "00000000000001000000000000" => r_sample <= w_samples(12);
-                    when "00000000000010000000000000" => r_sample <= w_samples(13);
-                    when "00000000000100000000000000" => r_sample <= w_samples(14);
-                    when "00000000001000000000000000" => r_sample <= w_samples(15);
-                    when "00000000010000000000000000" => r_sample <= w_samples(16);
-                    when "00000000100000000000000000" => r_sample <= w_samples(17);
-                    when "00000001000000000000000000" => r_sample <= w_samples(18);
-                    when "00000010000000000000000000" => r_sample <= w_samples(19);
-                    when "00000100000000000000000000" => r_sample <= w_samples(20);
-                    when "00001000000000000000000000" => r_sample <= w_samples(21);
-                    when "00010000000000000000000000" => r_sample <= w_samples(22);
-                    when "00100000000000000000000000" => r_sample <= w_samples(23);
-                    when "01000000000000000000000000" => r_sample <= w_samples(24);
-                    when "10000000000000000000000000" => r_sample <= w_samples(25);
-                    when others => r_sample <= (others=>'0');
-                end case;
-        end process;
+        r_sample <= w_samples(0)  when w_DV(0) = '1' else
+                    w_samples(1)  when w_DV(1) = '1' else
+                    w_samples(2)  when w_DV(2) = '1' else
+                    w_samples(3)  when w_DV(3) = '1' else
+                    w_samples(4)  when w_DV(4) = '1' else
+                    w_samples(5)  when w_DV(5) = '1' else
+                    w_samples(6)  when w_DV(6) = '1' else
+                    w_samples(7)  when w_DV(7) = '1' else
+                    w_samples(8)  when w_DV(8) = '1' else
+                    w_samples(9)  when w_DV(9) = '1' else
+                    w_samples(10) when w_DV(10) = '1' else
+                    w_samples(11) when w_DV(11) = '1' else
+                    w_samples(12) when w_DV(12) = '1' else
+                    w_samples(13) when w_DV(13) = '1' else
+                    w_samples(14) when w_DV(14) = '1' else
+                    w_samples(15) when w_DV(15) = '1' else
+                    w_samples(16) when w_DV(16) = '1' else
+                    w_samples(17) when w_DV(17) = '1' else
+                    w_samples(18) when w_DV(18) = '1' else
+                    w_samples(19) when w_DV(19) = '1' else
+                    w_samples(20) when w_DV(20) = '1' else
+                    w_samples(21) when w_DV(21) = '1' else
+                    w_samples(22) when w_DV(22) = '1' else
+                    w_samples(23) when w_DV(23) = '1' else
+                    w_samples(24) when w_DV(24) = '1' else
+                    w_samples(25) when w_DV(25) = '1' else
+                    (others=>'0');
 
+
+        ----------------------------------------------------------------------
+        --Turn on the LEDs on board based on the sample which is being played
+        ----------------------------------------------------------------------
+        o_LEDs <= r_sample(23 downto 16);
+        
         o_LRCLK <= w_LRCLK;
 
     end RTL;

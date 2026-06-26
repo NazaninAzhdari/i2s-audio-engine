@@ -32,6 +32,7 @@ entity melody_gen is
     );
     port (
         i_clk       :   in      STD_LOGIC; --Systems clock 50MHz
+        i_reset     :   in      STD_LOGIC;
         i_en        :   in      STD_LOGIC;
         i_LRCLK     :   in      STD_LOGIC; --Sample rate 48KHz
         o_sample    :   out     unsigned(g_sample_width-1 downto 0);
@@ -53,9 +54,20 @@ architecture RTL of melody_gen is
     signal w_en                 : STD_LOGIC                           :='0';
 
     begin
-        process(i_clk) is
+        process(i_clk, i_reset) is
             begin
-                if rising_edge(i_clk) then
+                if i_reset = '1' then
+                    r_LRCLK <= '0';
+                    r_sample <= (others=>'0');
+                    r_freq_counter <= 0;
+                    r_duration_counter <= 0;
+                    tone_indx <= 0;
+                    r_level <='0';
+                    r_en <= '0';
+                    w_en <= '0';
+                    o_sample_DV <= '0';
+
+                elsif rising_edge(i_clk) then
                     r_LRCLK <= i_LRCLK;
                     r_en <= i_en;
                     if i_en = '1' and r_en = '0' then --rising edge of enable signal

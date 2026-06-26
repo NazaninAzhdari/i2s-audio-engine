@@ -212,7 +212,7 @@ architecture RTL of RX_decoder is
                         o_key_g <= '1';
                         r_key_g_timer <= r_key_g_timer - 1;
                     else
-                        o_key_a <= '0';
+                        o_key_g <= '0';
                     end if;
 
                     if r_key_h_timer > 0 then

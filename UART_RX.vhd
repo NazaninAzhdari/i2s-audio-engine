@@ -19,6 +19,7 @@ entity UART_RX is
     );
     port (
         i_clk                :   in      STD_LOGIC;
+        i_reset              :   in      STD_LOGIC;
         i_data_serial        :   in      STD_LOGIC;
         o_data_parallel      :   out     unsigned(g_BITS_LIMIT -1 downto 0);
         o_data_DV            :   out     STD_LOGIC
@@ -38,9 +39,17 @@ architecture RTL of UART_RX is
 	signal r_DV              :  STD_LOGIC                             :='0';
     
     begin
-        process(i_clk) is
+        process(i_clk, i_reset) is
             begin
-                if rising_edge(i_clk) then
+                if i_reset = '1' then
+                    r_SM <= IDLE;
+                    r_clk_counter <= 0;
+                    r_bit_counter <= 0;
+                    r_data_serial <= '0';
+                    r_shift <= (others=>'0');
+                    r_DV <= '0';
+
+                elsif rising_edge(i_clk) then
                     r_data_serial <= i_data_serial;
 
                     case r_SM is 
