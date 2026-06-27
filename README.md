@@ -10,6 +10,13 @@ The primary goal of this project is to create an interactive musical system. Whe
   
 ![Block Diagram](https://nazaninazhdari.github.io/i2s-audio-engine/doc/diagram/Block_Diagram.PNG)  
 
+---
+## Generated Audios
+
+<audio controls>
+  <source src="https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_a.mp3" type="audio/mpeg">
+</audio>
+
   
 ---
 
@@ -54,4 +61,4 @@ Configure your PC's serial terminal (I used PuTTY) to match the `g_CLKS_PER_BIT`
 ![com configuration](https://nazaninazhdari.github.io/i2s-audio-engine/doc/diagram/COM_configuration.png)
 ### **Hardware Deployment:** 
 This audio engine has been tested on the Cyclone V GX FPGA, to see the pinout table click on link below:  
-[Click here to open the Pinout-Table.CSV](https://nazaninazhdari.github.io/i2s-audio-engine/doc/pinout/i2s_audio_engine_pinout.csv)  
+[Click here to open the Pinout-Table.CSV](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/pinout/i2s_audio_engine_pinout.csv)  
