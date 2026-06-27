@@ -1,7 +1,7 @@
-## I2S Audio Engine
+# I2S Audio Engine
 
-This repo provides a digital system designed to process serial data and generate audio signals. The UART receiver and decoder modules handle incoming ASCII characters, which are subsequently mapped to specific musical keys. A melody generator and specialized package file collaborate to produce digital audio samples based on these inputs. These samples are then formatted for output via an I2S transmitter, which manages the timing clocks and serial data stream required for audio hardware. Finally, the repo includes testbenches for i2s-transmitter and UART-reciever to verify the functionality of these two protocol.
-
+This repo provides a digital system designed to process serial data and generate audio signals. The UART receiver and decoder modules handle incoming ASCII characters, which are subsequently mapped to specific musical keys. A melody generator and specialized package file collaborate to produce digital audio samples based on these inputs. These samples are then formatted for output via an I2S transmitter, which manages the timing clocks and serial data stream required for audio hardware. Finally, the repo includes testbenches for i2s-transmitter and UART-reciever to verify the functionality of these two protocol.  
+  
 ---
 
 ## 1. Project Overview
@@ -48,11 +48,14 @@ This is the top-level entity that connects all the modules mentioned above. It h
 
 ## 3. Setup Guide
 
-**Verification:** You can use the provided testbenches (`UART_RX_TB` and `i2s_tx_TB`) in your desired simulator(I have used Isim) before loading the design onto the hardware to verify that the timing and data streams are correct.
+### **Verification:** 
+You can use the provided testbenches (`UART_RX_TB` and `i2s_tx_TB`) in your desired simulator(I have used Isim) before loading the design onto the hardware to verify that the timing and data streams are correct.
 
-**Serial Settings:** Configure your PC's serial terminal (like PuTTY or Tera Term) to match the `g_CLKS_PER_BIT` setting in the `UART_RX` module (typically 115200 baud).  
+### **Serial Settings:** 
+Configure your PC's serial terminal (like PuTTY or Tera Term) to match the `g_CLKS_PER_BIT` setting in the `UART_RX` module (typically 115200 baud).  
 
 ![com configuration](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/COM_configuration.PNG)   
 ---
 
-**Hardware Deployment:** This VHDL audio engine has been tested on the Cyclone V GX FPGA, to see the pinout table click here:
+### **Hardware Deployment:** 
+This VHDL audio engine has been tested on the Cyclone V GX FPGA, to see the pinout table click here:
