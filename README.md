@@ -8,7 +8,7 @@ This repo provides a digital system designed to process serial data and generate
 
 The primary goal of this project is to create an interactive musical system. When you send **ASCII characters** (standard text) through a serial connection, the system identifies the character and maps it to a specific musical note. These notes are then synthesized into digital audio samples and transmitted using the **I2S protocol**. This project covers the full path of data: from receiving raw serial bits to producing high-quality 24-bit audio signals.  
   
-![Block Diagram](https://nazaninazhdari.github.io/i2s-audio-engine/doc/diagram/block_diagram.png)  
+![Block Diagram](https://nazaninazhdari.github.io/i2s-audio-engine/doc/diagram/Block_Diagram.PNG)  
 
   
 ---
