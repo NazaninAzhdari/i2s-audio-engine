@@ -8,7 +8,7 @@ This repo provides a digital system designed to process serial data and generate
 
 The primary goal of this project is to create an interactive musical system. When you send **ASCII characters** (standard text) through a serial connection, the system identifies the character and maps it to a specific musical note. These notes are then synthesized into digital audio samples and transmitted using the **I2S protocol**. This project covers the full path of data: from receiving raw serial bits to producing high-quality 24-bit audio signals.  
   
-![Block Diagram](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/block_diagram.png)  
+![Block Diagram](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/Block_Diagram.PNG)  
   
 ---
 
@@ -20,7 +20,7 @@ This is the entry point of the system. It receives 8 bits of serial data, one st
 ![UART FSM](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/UART_FSM.PNG)  
   
 ---
-### **RX_decoder**
+**RX_decoder**
 This module acts as a translator. It takes the 8-bit ASCII code from the UART receiver and maps it to 26 different output ports (`o_key_a` through `o_key_z`). This allows the system to recognize which letter was typed and trigger the corresponding musical response.
 
 ### **melody_pack**
@@ -41,21 +41,21 @@ It serializes the 24-bit samples into a continuous stream of data for the audio 
 ![I2S slide2](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/I2S_Slide2.PNG)  
 ---
 
-### **audio_engine_top**
+**audio_engine_top**
 This is the top-level entity that connects all the modules mentioned above. It handles the 50MHz system clock, the reset logic, and routes the signals between the UART, the decoder, the generator, and the transmitter.
 
 ---
 
 ## 3. Setup Guide
 
-### **Verification:** 
+**Verification:** 
 You can use the provided testbenches (`UART_RX_TB` and `i2s_tx_TB`) in your desired simulator(I have used Isim) before loading the design onto the hardware to verify that the timing and data streams are correct.
 
-### **Serial Settings:** 
+**Serial Settings:** 
 Configure your PC's serial terminal (like PuTTY or Tera Term) to match the `g_CLKS_PER_BIT` setting in the `UART_RX` module (typically 115200 baud).  
 
-![com configuration](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/COM_configuration.PNG)   
+![com configuration](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/COM_configuration.png)   
 ---
 
-### **Hardware Deployment:** 
+**Hardware Deployment:** 
 This VHDL audio engine has been tested on the Cyclone V GX FPGA, to see the pinout table click here:
