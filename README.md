@@ -12,6 +12,8 @@ The primary goal of this project is to create an interactive musical system. Whe
   
 ---
 
+[Click to hear the sound](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/audio/Sound_1.mp3)
+
 ## 2. Module Descriptions
 
 ### **UART_RX (Universal Asynchronous Receiver)**
