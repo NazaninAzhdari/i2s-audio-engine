@@ -4,7 +4,7 @@ This repo provides a digital system designed to process serial data and generate
   
 ---
 
-## 1. Project Overview
+## Project Overview
 
 The primary goal of this project is to create an interactive musical system. When you send **ASCII characters** (standard text) through a serial connection, the system identifies the character and maps it to a specific musical note. These notes are then synthesized into digital audio samples and transmitted using the **I2S protocol**. This project covers the full path of data: from receiving raw serial bits to producing high-quality 24-bit audio signals.  
   
@@ -12,14 +12,64 @@ The primary goal of this project is to create an interactive musical system. Whe
 
 ---
 ## Generated Audios
+Below, you can listen to all the generated audio samples for each keyboard key. Alos you can find the corresponding frequency and duration details for these melodies in my custom [melody_pack.vhd](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/rtl/pkg/melody_pack.vhd) package.  
 
-[Play Audio](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_a.mp3)
-
-
+**Generated Audio for Key A:** Evolving and Machine Awakening.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_a.mp3)  
+**Generated Audio for Key B:** Mega Police Siren (Up-Down Sweep Loop).
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_b.mp3)  
+**Generated Audio for Key C:** Realistic Police Sweep.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_c.mp3)  
+**Generated Audio for Key D:** Ambulance Siren (Hi-Lo).
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_d.mp3)  
+**Generated Audio for Key E:** Pursuit Mode Siren.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_e.mp3)  
+**Generated Audio for Key F:** Barbie Magic Sparkle.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_f.mp3)  
+**Generated Audio for Key G:** Barbie Hello Startup.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_g.mp3)  
+**Generated Audio for Key H:** Barbie Keypad Beeps.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_h.mp3)  
+**Generated Audio for Key I:** Barbie Fairy Wand.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_i.mp3)  
+**Generated Audio for Key J:** Barbie Toy Ringtone.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_g.mp3)  
+**Generated Audio for Key K:** Retro Start Game.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_k.mp3)  
+**Generated Audio for Key L:** Retro Stage Select.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_l.mp3)  
+**Generated Audio for Key M:** Retro Adventure Theme.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_m.mp3)  
+**Generated Audio for Key N:** Retro Racing Loop.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_n.mp3)  
+**Generated Audio for Key O:** Retro Dungeon Theme.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_o.mp3)  
+**Generated Audio for Key P:** Retro Boss Warning.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_p.mp3)  
+**Generated Audio for Key Q:** Bird Chirp.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_q.mp3)  
+**Generated Audio for Key R:** Frog Croak.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_r.mp3)  
+**Generated Audio for Key S:** Elephant Call.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_s.mp3)  
+**Generated Audio for Key T:** Steam Engine.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_t.mp3)  
+**Generated Audio for Key U:** Alien Siren.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_u.mp3)  
+**Generated Audio for Key V:** Robot Talking.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_v.mp3)  
+**Generated Audio for Key W:** Spaceship Engine Hum.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_w.mp3)  
+**Generated Audio for Key X:** Evolving: Rising Dawn.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_x.mp3)  
+**Generated Audio for Key Y:** Evolving: Cosmic Scanner.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_y.mp3)  
+**Generated Audio for Key Z:** Evolving: Danger Rising.
+[Click to play the audio!](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_z.mp3)  
   
 ---
 
-## 2. Module Descriptions
+## Module Descriptions
 
 ### **UART_RX (Universal Asynchronous Receiver)**
 This is the entry point of the system. It receives 8 bits of serial data, one start bit, and one stop bit. It uses a generic called `g_CLKS_PER_BIT` to match the FPGA’s internal clock (50MHz) to the desired baud rate (e.g., 115200). Once a complete character is received, it triggers a "Data Valid" signal (`o_data_DV`) to let the rest of the system know a new character is ready.  
@@ -51,7 +101,7 @@ This is the top-level entity that connects all the modules mentioned above. It h
 
 ---
 
-## 3. Setup Guide
+## Setup Guide
 
 ### **Verification:** 
 You can use the provided testbenches (`UART_RX_TB` and `i2s_tx_TB`) in your desired simulator(I have used Isim to write and simulate them) before loading the design onto the hardware to verify that the timing and data streams are correct.
