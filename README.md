@@ -13,9 +13,8 @@ The primary goal of this project is to create an interactive musical system. Whe
 ---
 ## Generated Audios
 
-<audio controls>
-  <source src="https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_a.mp3" type="audio/mpeg">
-</audio>
+[Play Audio](https://nazaninazhdari.github.io/i2s-audio-engine/doc/audio/Audio_key_a.mp3)
+
 
   
 ---
