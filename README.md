@@ -18,9 +18,8 @@ The primary goal of this project is to create an interactive musical system. Whe
 This is the entry point of the system. It receives 8 bits of serial data, one start bit, and one stop bit. It uses a generic called `g_CLKS_PER_BIT` to match the FPGA’s internal clock (50MHz) to the desired baud rate (e.g., 115200). Once a complete character is received, it triggers a "Data Valid" signal (`o_data_DV`) to let the rest of the system know a new character is ready.  
   
 ![UART FSM](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/UART_FSM.PNG)  
-  
----
-**RX_decoder**
+
+### **RX_decoder**
 This module acts as a translator. It takes the 8-bit ASCII code from the UART receiver and maps it to 26 different output ports (`o_key_a` through `o_key_z`). This allows the system to recognize which letter was typed and trigger the corresponding musical response.
 
 ### **melody_pack**
@@ -39,23 +38,18 @@ It serializes the 24-bit samples into a continuous stream of data for the audio 
 ![I2S slide1](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/I2S_Slide1.PNG)  
 ---
 ![I2S slide2](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/I2S_Slide2.PNG)  
----
 
-**audio_engine_top**
+### **audio_engine_top**
 This is the top-level entity that connects all the modules mentioned above. It handles the 50MHz system clock, the reset logic, and routes the signals between the UART, the decoder, the generator, and the transmitter.
 
 ---
 
 ## 3. Setup Guide
 
-**Verification:** 
+### **Verification:** 
 You can use the provided testbenches (`UART_RX_TB` and `i2s_tx_TB`) in your desired simulator(I have used Isim) before loading the design onto the hardware to verify that the timing and data streams are correct.
-
-**Serial Settings:** 
+### **Serial Settings:** 
 Configure your PC's serial terminal (like PuTTY or Tera Term) to match the `g_CLKS_PER_BIT` setting in the `UART_RX` module (typically 115200 baud).  
-
-![com configuration](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/COM_configuration.png)   
----
-
-**Hardware Deployment:** 
+![com configuration](https://github.com/NazaninAzhdari/i2s-audio-engine/blob/main/doc/diagram/COM_configuration.png)
+### **Hardware Deployment:** 
 This VHDL audio engine has been tested on the Cyclone V GX FPGA, to see the pinout table click here:
