@@ -1,12 +1,12 @@
 # I2S Audio Engine
 
-This repo provides a digital system designed to process serial data and generate audio signals. The UART receiver and decoder modules handle incoming ASCII characters, which are subsequently mapped to specific musical keys. A melody generator and specialized package file collaborate to produce digital audio samples based on these inputs. These samples are then formatted for output via an I2S transmitter, which manages the timing clocks and serial data stream required for audio hardware. Finally, the repo includes testbenches for i2s-transmitter and UART-reciever to verify the functionality of these two protocol.  
+This repo contains a digital system that reads serial data and turns it into audio signals. The UART receiver and decoder modules take incoming ASCII characters and map them to specific musical notes. A melody generator and a package file then work together to create digital audio samples from these notes. These samples are sent out through an I2S transmitter, which handles the timing clocks and serial data needed for audio hardware. The repo also includes testbenches for the I2S transmitter and UART receiver to check that both protocols work correctly.
   
 ---
 
 ## Project Overview
 
-The primary goal of this project is to create an interactive musical system. When you send **ASCII characters** (standard text) through a serial connection, the system identifies the character and maps it to a specific musical note. These notes are then synthesized into digital audio samples and transmitted using the **I2S protocol**. This project covers the full path of data: from receiving raw serial bits to producing high-quality 24-bit audio signals.  
+The goal of this project is to create an interactive musical system. When you send ASCII characters (standard text) through a serial connection, the system identifies the character and maps it to a specific musical note. These notes are then synthesized into digital audio samples and transmitted using the I2S protocol. This project covers the full path of data: from receiving raw serial bits to producing high-quality 24-bit audio signals.
   
 ![Block Diagram](https://nazaninazhdari.github.io/i2s-audio-engine/doc/diagram/Block_Diagram.PNG)  
 
