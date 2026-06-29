@@ -2,6 +2,8 @@
 
 This repo contains a digital system that reads serial data and turns it into audio signals. The UART receiver and decoder modules take incoming ASCII characters and map them to specific musical notes. A melody generator and a package file then work together to create digital audio samples from these notes. These samples are sent out through an I2S transmitter, which handles the timing clocks and serial data needed for audio hardware. The repo also includes testbenches for the I2S transmitter and UART receiver to check that both protocols work correctly.
   
+## Watch my video on youtube (click on the picture below):  
+[![Watch the video](https://img.youtube.com/vi/alMRRR7Sw7M/maxresdefault.jpg)](https://youtu.be/alMRRR7Sw7M)   
 ---
 
 ## Project Overview
